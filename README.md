@@ -1,3 +1,6 @@
+<p align="center">
+  <img src="imagem_2026-05-28_011546675.png" width="250">
+</p>
 # SmartWood
 Aplicativo voltado para o descarte inteligente e reutilização de materiais, promovendo sustentabilidade e economia circular.”
 ## Objetivo
