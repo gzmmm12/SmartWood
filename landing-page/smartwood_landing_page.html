@@ -1,1 +1,542 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SmartWood - Reaproveitamento Sustentável</title>
 
+<style>
+  *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+  }
+
+  html{
+    scroll-behavior:smooth;
+  }
+
+  body{
+    font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif;
+    background:#f7f9f6;
+    color:#2c2c2c;
+    line-height:1.6;
+  }
+
+  a{
+    text-decoration:none;
+    color:inherit;
+  }
+
+  img{
+    max-width:100%;
+    display:block;
+  }
+
+  .container{
+    max-width:1100px;
+    margin:auto;
+    padding:0 1rem;
+  }
+
+  /* MENU */
+  .navbar{
+    position:sticky;
+    top:0;
+    z-index:999;
+    background:rgba(255,255,255,0.95);
+    backdrop-filter:blur(10px);
+    box-shadow:0 2px 10px rgba(0,0,0,0.08);
+  }
+
+  .nav-content{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:1rem 0;
+  }
+
+  .logo{
+    font-size:1.5rem;
+    font-weight:700;
+    color:#2e7d32;
+  }
+
+  .menu{
+    display:flex;
+    gap:1.5rem;
+    flex-wrap:wrap;
+  }
+
+  .menu a{
+    font-weight:600;
+    color:#444;
+    transition:0.3s;
+  }
+
+  .menu a:hover{
+    color:#2e7d32;
+  }
+
+  /* HERO */
+  .hero{
+    background:linear-gradient(135deg,#e6f2e6,#dcedd9);
+    padding:5rem 1rem;
+    border-radius:20px;
+    margin-top:2rem;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+  }
+
+  .hero h1{
+    font-size:3rem;
+    color:#2e7d32;
+    margin-bottom:1rem;
+  }
+
+  .hero p{
+    font-size:1.2rem;
+    max-width:700px;
+    margin:auto;
+    color:#444;
+  }
+
+  .btn-primary{
+    margin-top:2rem;
+    background:#2e7d32;
+    color:#fff;
+    border:none;
+    padding:1rem 2.2rem;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:1rem;
+    font-weight:600;
+    transition:0.3s;
+  }
+
+  .btn-primary:hover{
+    background:#256628;
+    transform:translateY(-2px);
+  }
+
+  /* SECTIONS */
+  section{
+    margin-top:5rem;
+  }
+
+  section h2{
+    text-align:center;
+    font-size:2.2rem;
+    color:#2e7d32;
+    margin-bottom:2rem;
+  }
+
+  /* SOBRE */
+  .about{
+    background:#fff;
+    padding:3rem;
+    border-radius:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.06);
+  }
+
+  .about-content{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:2rem;
+    align-items:center;
+  }
+
+  .about-text p{
+    margin-bottom:1rem;
+    color:#555;
+  }
+
+  .about-card{
+    background:#f0f7f0;
+    padding:2rem;
+    border-radius:18px;
+    border-left:6px solid #2e7d32;
+  }
+
+  .about-card h3{
+    color:#2e7d32;
+    margin-bottom:1rem;
+  }
+
+  /* COMO FUNCIONA */
+  .step-list{
+    display:flex;
+    flex-wrap:wrap;
+    gap:1.5rem;
+    justify-content:center;
+  }
+
+  .step{
+    background:#fff;
+    flex:1 1 280px;
+    padding:2rem;
+    border-radius:18px;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,0.08);
+    transition:0.3s;
+  }
+
+  .step:hover{
+    transform:translateY(-6px);
+  }
+
+  .step-number{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    background:#2e7d32;
+    color:white;
+    margin:auto;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:1.5rem;
+    font-weight:700;
+    margin-bottom:1rem;
+  }
+
+  .step-title{
+    font-size:1.2rem;
+    margin-bottom:0.7rem;
+    color:#2e7d32;
+  }
+
+  /* BENEFICIOS */
+  .benefits{
+    background:#edf7ed;
+    padding:3rem 2rem;
+    border-radius:20px;
+  }
+
+  .benefits-list{
+    list-style:none;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:1rem;
+  }
+
+  .benefits-list li{
+    background:white;
+    padding:1rem;
+    border-radius:12px;
+    font-weight:600;
+    box-shadow:0 3px 10px rgba(0,0,0,0.05);
+  }
+
+  /* PUBLICO */
+  .target-list{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:1rem;
+  }
+
+  .target-item{
+    background:white;
+    padding:1.4rem;
+    border-radius:16px;
+    text-align:center;
+    font-weight:600;
+    box-shadow:0 4px 12px rgba(0,0,0,0.06);
+  }
+
+  /* MAPA */
+  .recycle-map{
+    background:#e9f3ea;
+    padding:3rem;
+    border-radius:20px;
+  }
+
+  .recycle-map p{
+    text-align:center;
+    max-width:800px;
+    margin:0 auto 2rem auto;
+  }
+
+  .map-placeholder{
+    background:#d3e7d1;
+    border:3px dashed #2e7d32;
+    border-radius:18px;
+    padding:5rem 2rem;
+    text-align:center;
+    font-size:1.2rem;
+    color:#256628;
+    font-weight:700;
+  }
+
+  /* CTA */
+  .cta{
+    background:linear-gradient(135deg,#2e7d32,#1f5a23);
+    color:white;
+    text-align:center;
+    padding:4rem 2rem;
+    border-radius:24px;
+    margin-bottom:4rem;
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
+  }
+
+  .cta h2{
+    color:white;
+    margin-bottom:1rem;
+  }
+
+  .cta p{
+    max-width:700px;
+    margin:auto;
+  }
+
+  /* FOOTER */
+  footer{
+    text-align:center;
+    padding:2rem;
+    color:#666;
+    font-size:0.95rem;
+  }
+
+  /* RESPONSIVO */
+  @media(max-width:768px){
+
+    .hero h1{
+      font-size:2.2rem;
+    }
+
+    .menu{
+      gap:0.8rem;
+      justify-content:center;
+    }
+
+    .nav-content{
+      flex-direction:column;
+      gap:1rem;
+    }
+
+    .about-content{
+      grid-template-columns:1fr;
+    }
+
+    .about{
+      padding:2rem 1.5rem;
+    }
+
+    .recycle-map{
+      padding:2rem 1.2rem;
+    }
+
+  }
+</style>
+</head>
+
+<body>
+
+<!-- MENU SUPERIOR -->
+<nav class="navbar">
+  <div class="container nav-content">
+
+    <div class="logo">SmartWood</div>
+
+    <div class="menu">
+      <a href="#inicio">Início</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#funciona">Como Funciona</a>
+      <a href="#beneficios">Benefícios</a>
+      <a href="#publico">Público</a>
+      <a href="#reciclagem">Reciclagem</a>
+      <a href="#contato">Contato</a>
+    </div>
+
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- HERO -->
+  <header class="hero" id="inicio">
+
+    <h1>SmartWood</h1>
+
+    <p>
+      Seu aplicativo para reciclagem, troca e reaproveitamento de materiais sustentáveis.
+      Transformando sobras em novas oportunidades.
+    </p>
+
+    <button class="btn-primary">
+      Começar Agora
+    </button>
+
+  </header>
+
+  <!-- SOBRE -->
+  <section class="about" id="sobre">
+
+    <h2>Sobre a SmartWood</h2>
+
+    <div class="about-content">
+
+      <div class="about-text">
+
+        <p>
+          A SmartWood nasceu da ideia de reduzir o desperdício de materiais
+          que normalmente seriam descartados por marcenarias, empresas e pessoas.
+        </p>
+
+        <p>
+          Percebemos que toneladas de madeira, plástico e outros materiais
+          ainda poderiam ser reutilizados em projetos, móveis, artesanato
+          e ações sociais.
+        </p>
+
+        <p>
+          Pensando nisso, desenvolvemos um aplicativo simples e acessível,
+          onde qualquer pessoa pode anunciar, trocar, doar ou vender materiais
+          reaproveitáveis de forma rápida e sustentável.
+        </p>
+
+        <p>
+          Nosso objetivo é incentivar a economia circular e conectar pessoas
+          interessadas em construir um futuro mais consciente.
+        </p>
+
+      </div>
+
+      <div class="about-card">
+
+        <h3>Como foi desenvolvido?</h3>
+
+        <p>
+          O projeto foi pensado para unir tecnologia, sustentabilidade e impacto social.
+        </p>
+
+        <p>
+          A interface foi criada para ser moderna, intuitiva e fácil de usar,
+          permitindo que empresas, marceneiros e ONGs encontrem materiais reutilizáveis
+          rapidamente.
+        </p>
+
+        <p>
+          Além disso, o SmartWood também foi projetado para crescer futuramente
+          com mapas interativos, sistema de localização e integração com pontos
+          de coleta e reciclagem.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- COMO FUNCIONA -->
+  <section id="funciona">
+
+    <h2>Como Funciona</h2>
+
+    <div class="step-list">
+
+      <article class="step">
+        <div class="step-number">1</div>
+        <h3 class="step-title">Cadastre materiais</h3>
+        <p>
+          Publique retalhos, sobras e materiais recicláveis.
+        </p>
+      </article>
+
+      <article class="step">
+        <div class="step-number">2</div>
+        <h3 class="step-title">Escolha uma ação</h3>
+        <p>
+          Troque, venda ou doe materiais para outras pessoas.
+        </p>
+      </article>
+
+      <article class="step">
+        <div class="step-number">3</div>
+        <h3 class="step-title">Conecte-se</h3>
+        <p>
+          Encontre empresas, projetos e iniciativas sustentáveis.
+        </p>
+      </article>
+
+    </div>
+
+  </section>
+
+  <!-- BENEFICIOS -->
+  <section class="benefits" id="beneficios">
+
+    <h2>Benefícios</h2>
+
+    <ul class="benefits-list">
+
+      <li>Redução do desperdício</li>
+      <li>Economia para empresas e profissionais</li>
+      <li>Ajuda projetos sociais</li>
+      <li>Fortalece a sustentabilidade</li>
+      <li>Promove economia circular</li>
+      <li>Conecta pessoas e oportunidades</li>
+
+    </ul>
+
+  </section>
+
+  <!-- PUBLICO -->
+  <section id="publico">
+
+    <h2>Para Quem é?</h2>
+
+    <div class="target-list">
+
+      <div class="target-item">Marceneiros</div>
+      <div class="target-item">Carpinteiros</div>
+      <div class="target-item">Empresas</div>
+      <div class="target-item">Artesãos</div>
+      <div class="target-item">ONGs</div>
+      <div class="target-item">Pessoas sustentáveis</div>
+
+    </div>
+
+  </section>
+
+  <!-- RECICLAGEM -->
+  <section class="recycle-map" id="reciclagem">
+
+    <h2>Mapa de Reciclagem</h2>
+
+    <p>
+      O SmartWood ajuda você a encontrar pontos de coleta e reciclagem
+      de madeira, plástico, metal, papel e diversos outros materiais.
+    </p>
+
+    <div class="map-placeholder">
+      [ MAPA INTERATIVO AQUI ]
+    </div>
+
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="contato">
+
+    <h2>
+      Transforme desperdício em oportunidade
+    </h2>
+
+    <p>
+      Faça parte do SmartWood e ajude a criar um futuro mais sustentável.
+    </p>
+
+    <button class="btn-primary">
+      Cadastre-se Agora
+    </button>
+
+  </section>
+
+</div>
+
+<footer>
+  ©️ 2026 SmartWood - Sustentabilidade inteligente.
+</footer>
+
+</body>
+</html>
